@@ -19,9 +19,14 @@ app.use(event);
 
 app.use(cors());
 app.use(session({
-    secret: "MY_SECRET"
+    secret: "MY_SECRET",
+    resave:false,
+    saveUninitialized:false,
+    cookie:{
+        secure:false,
+        maxAge : 1000*60*60*24
+    }
 }));
-
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
